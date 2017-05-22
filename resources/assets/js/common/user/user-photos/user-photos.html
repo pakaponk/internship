@@ -1,0 +1,28 @@
+<div class="container">
+    <h3><span>{{ $ctrl.isOwner ? 'My': $ctrl.user.name }}</span> Gallery</h3>
+
+    <div class="pv-30">
+        <div ng-show="$ctrl.photos.length" class="row">
+            <div class="col-sm-6 col-md-4" ng-repeat="photo in $ctrl.photos">
+                <photo-card-component photo="photo"></photo-card-component>
+            </div>
+        </div>
+
+        <div ng-hide="$ctrl.photos.length" class="not-found-message-block">
+            <i class="not-found-message-block__icon fa fa-frown-o fa-5x"></i>
+            <h3 class="not-found-message-block__message">
+                Sorry<br>
+                <span>
+                    {{ $ctrl.isOwner ? 'Look like you have not uploaded any photos yet': 'Look like this user have not uploaded any photos yet'}}    
+                </span>
+
+                <div ng-show="$ctrl.isOwner" class="pv-30">
+					<h4 class="text-muted">
+                        <a class="btn-link" ui-sref="photo.create" title="Create Photo">Upload a photo</a>
+                    </h4>
+				</div>
+            </h3>
+        </div>
+    </div>
+
+</div>

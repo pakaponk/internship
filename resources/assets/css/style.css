@@ -1,3 +1,21 @@
+.pv-30{
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.not-found-message-block{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.not-found-message-block .not-found-message-block__message,
+.not-found-message-block .not-found-message-block__icon{
+    color: #777;
+}
+
 .img-preview{
     padding: 20px 0;
     display: block;

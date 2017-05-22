@@ -3,8 +3,12 @@
 
     <div class="pv-30">
         <div ng-show="$ctrl.photos.length" class="row">
-            <div class="col-sm-6 col-md-4" ng-repeat="photo in $ctrl.photos">
-                <photo-card-component photo="photo"></photo-card-component>
+            <div ng-repeat="photo in $ctrl.photos">
+                <div class="col-sm-6 col-md-4">
+                    <photo-card-component photo="photo"></photo-card-component>
+                </div>
+                <div ng-if="$index%3 == 2" class="hidden-xs hidden-sm clearfix"></div>
+                <div ng-if="$index%2 == 1" class="hidden-xs hidden-md hidden-lg clearfix"></div>
             </div>
         </div>
 

@@ -23,7 +23,13 @@ class Photo extends Model
         {
             case "object":
                 $photo = Image::make($value);
+                $imageDirectory = public_path('images');
                 $photoDirectoryPath = public_path('images/photos');
+                if (!is_dir($imageDirectory))
+                {
+                    mkdir($imageDirectory, 0755);
+                }
+
                 if (!is_dir($photoDirectoryPath)){
                     mkdir($photoDirectoryPath, 0755);
                 }  

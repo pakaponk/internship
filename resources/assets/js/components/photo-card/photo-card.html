@@ -4,4 +4,5 @@
         <h4>{{$ctrl.photo.caption}}</h4>
         <p class="text-muted">By {{$ctrl.photo.user.name}}</p>
     </div>
+    <button ng-if="$ctrl.showDeleteButton" class="btn btn-danger" ng-click="$ctrl.delete($event)">Delete</button>
 </a>

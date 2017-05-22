@@ -36,13 +36,13 @@ module.exports = {
 				loader: 'html-loader'
 			}]
 		},
-		// {
-		// 	test: /\.html$/,
-		// 	include: path.resolve(__dirname, './index.html'),
-		// 	use: [{
-		// 		loader: 'html-loader'
-		// 	}]
-		// },
+		{
+			test: /\.html$/,
+			include: path.resolve(__dirname, './index.html'),
+			use: [{
+				loader: 'html-loader'
+			}]
+		},
 		{
 			test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
 			use: [{

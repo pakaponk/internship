@@ -1,6 +1,8 @@
 import angular from 'angular'
 
-export const CommonModule = angular.module('instagram.common', [
+import { UserModule } from './user/user.module' 
 
+export const CommonModule = angular.module('instagram.common', [
+	UserModule
 ])
 .name

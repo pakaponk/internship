@@ -12,10 +12,19 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::group(['prefix' => 'web'], function() {
+    Route::post('/auth/login', 'UserController@login');
+    Route::get('/auth/logout', 'UserController@logout');
+    Route::get('/auth/current', 'UserController@current');
+
     Route::resource('users', 'UserController', 
         ["only" => ['store']]);
+});
+
+
+Route::any('{catchall}', function(){
+    return view('index');
 });

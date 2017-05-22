@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 
+use Auth;
+
 class UserController extends Controller
 {
     /**
@@ -91,5 +93,37 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+    }
+
+     public function login(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+        if (Auth::attempt($request->only('email', 'password'), true)){
+            return response()->json(['success' => true, 'content' => Auth::user()]);
+        }
+        else
+        {
+            return response()->json(['success' => false, 'error' => 'Unauthenticated', 'message' => 'Invalid email or password'], 401);
+        }
+    }
+
+    public function current(){
+        if (Auth::check())
+        {
+            return response()->json(['success' => true, 'content' => Auth::user()]);
+        }
+        else
+        {
+            return response()->json(['success' => false, 'error' => 'Unauthenticated'], 401);
+        }
+    }
+
+    public function logout(){
+        Auth::logout();
+        return response()->json(['success' => true]);
     }
 }

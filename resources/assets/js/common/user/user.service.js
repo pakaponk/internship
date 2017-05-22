@@ -17,6 +17,25 @@ export class UserService{
 		.catch(errorResponse => this.handleError(errorResponse))
 	}
 
+	login(user){
+		return this.$http({
+			method: 'POST',
+			url: '/web/auth/login',
+			data: user
+		})
+		.then(successResponse => this.handleSuccess(successResponse))
+		.catch(errorResponse => this.handleError(errorResponse))
+	}
+
+	logout(){
+		return this.$http({
+			method: 'GET',
+			url: '/web/auth/logout',
+		})
+		.then(successResponse => this.handleSuccess(successResponse))
+		.catch(errorResponse => this.handleError(errorResponse))
+	}
+
 	current(){
 		if (angular.isDefined(this.user))
 		{

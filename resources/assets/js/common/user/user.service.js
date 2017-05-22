@@ -89,6 +89,15 @@ export class UserService{
 		}
 	}
 
+	get(id){
+		return this.$http({
+			method: 'GET',
+			url: `/web/users/${id}`
+		})
+		.then(successResponse => this.handleSuccess(successResponse))
+		.catch(errorResponse => this.handleError(errorResponse))
+	}
+
 	photos(id){
 		return this.$http({
 			method: 'GET',

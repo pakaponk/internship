@@ -24,7 +24,7 @@ Route::group(['prefix' => 'web'], function() {
     Route::post('/users/{user}/photos', 'UserController@storePhoto');
 
     Route::resource('users', 'UserController', 
-        ["only" => ['store']]);
+        ["only" => ['show', 'store']]);
 });
 
 

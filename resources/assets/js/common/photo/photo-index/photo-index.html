@@ -1,4 +1,6 @@
 <div class="container">
+    <h3>Explore</h3>
+
     <div class="pv-30">
         <div ng-show="$ctrl.photos.length" class="row">
             <div ng-repeat="photo in $ctrl.photos">
@@ -15,12 +17,14 @@
             <h3 class="not-found-message-block__message">
                 Sorry<br>
                 <span>
-                    {{ $ctrl.isOwner ? 'Look like you have not uploaded any photos yet': 'Look like this user have not uploaded any photos yet'}}    
+                    Look Like anyone have not uploaded a photo yet    
                 </span>
 
-                <div ng-show="$ctrl.isOwner" class="pv-30">
+                <div class="pv-30">
 					<h4 class="text-muted">
-                        Be the first one to upload it! <a class="btn-link" ui-sref="user.signup" title="Sign up">Sign up</a>
+                        Be the first one to upload it! 
+                        <a ng-if="!$ctrl.UserService.user" class="btn-link" ui-sref="user.signup" title="Sign up">Sign up</a>
+                        <a ng-if="$ctrl.UserService.user" class="btn-link" ui-sref="photo.create" title="Create Photo">Upload Photo</a>
                     </h4>
 				</div>
 

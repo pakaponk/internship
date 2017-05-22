@@ -6,8 +6,9 @@ export const PhotoIndexComponent = {
 		photos: '<'
 	},
 	controller: class PhotoIndexComponent{
-		constructor(){
+		constructor(UserService){
 			'ngInject'
+			this.UserService = UserService
 		}
 	}
 }

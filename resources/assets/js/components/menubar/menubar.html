@@ -4,6 +4,20 @@
 			<a class="navbar-brand">Internship</a>
 		</div>
 		<nav>
+			<ul class="nav navbar-nav">
+				<li>
+					<a ui-sref="photo.index">Explore</a>
+				</li>
+
+				<li ng-if="$ctrl.UserService.user">
+					<a ui-sref="user.photos({id: $ctrl.UserService.user.id})">My Gallery</a>
+				</li>
+
+				<li ng-if="$ctrl.UserService.user">
+					<a ui-sref="photo.create">Create Photo</a>
+				</li>
+			</ul>
+
 			<ul class="nav navbar-nav navbar-right">
 				<li ng-if="!$ctrl.UserService.user">
 					<a ui-sref="user.signup">Sign up</a>

@@ -1,3 +1,5 @@
+import angular from 'angular'
+
 export class UserService{
 	constructor($http, $log){
 		'ngInject'
@@ -13,6 +15,57 @@ export class UserService{
 		})
 		.then(successResponse => this.handleSuccess(successResponse))
 		.catch(errorResponse => this.handleError(errorResponse))
+	}
+
+	current(){
+		if (angular.isDefined(this.user))
+		{
+			if (this.user)
+			{
+				return Promise.resolve(this.user)
+			}
+			else
+			{
+				return Promise.reject({
+					status: 401,
+					data: {
+						success: false,
+						error: "Unauthorized"
+					}
+				})
+			}
+		}
+		else
+		{
+			return this.$http({
+				method : 'GET',
+				url : '/web/auth/current'
+			})
+			.then((successResponse) => this.handleSuccess(successResponse))
+			.then((user) => {
+				this.setUser(user)
+				return user
+			})
+			.catch((errorResponse) => {
+				this.setUser(null)
+				return this.handleError(errorResponse)
+			})
+		}
+	}
+
+	getUser(){
+		return this.user
+	}
+
+	setUser(user){
+		if (this.user && user)
+		{
+			Object.assign(this.user, user)
+		}
+		else
+		{
+			this.user = user
+		}
 	}
 
 	handleSuccess(response){

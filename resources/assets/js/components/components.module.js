@@ -1,6 +1,8 @@
 import angular from 'angular'
 
-export const ComponentsModule = angular.module('instagram.components', [
+import { MenubarModule } from './menubar/menubar.module'
 
+export const ComponentsModule = angular.module('instagram.components', [
+	MenubarModule
 ])
 .name

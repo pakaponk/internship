@@ -17,9 +17,10 @@ export const PhotoCreateComponent = {
 		userId: '<'
 	},
 	controller: class PhotoCreateComponent{
-		constructor(UserService){
+		constructor($state, UserService){
 			'ngInject'
 			this.UserService = UserService
+			this.$state = $state
 		}
 
 		create(photo){
@@ -29,6 +30,10 @@ export const PhotoCreateComponent = {
 					type: "success",
 					title: "Congratulation!",
 					text: "Your photo have been uploaded."
+				}, () => {
+					this.$state.go('user.photos', {
+						id: this.UserService.user.id
+					})
 				})
 			})
 			.catch(error => {

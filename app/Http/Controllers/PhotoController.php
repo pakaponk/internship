@@ -84,7 +84,22 @@ class PhotoController extends Controller
      */
     public function destroy(Photo $photo)
     {
-        //
+        if (!Auth::check())
+        {
+            return response()->json(['success' => false, 'error' => 'Unauthenticated'], 401);
+        }
+
+        if (Auth::id() != $photo->user_id)
+        {
+            return response()->json(['success' => false, 'error' => 'Forbidden'], 403);
+        }
+
+        if (file_exists(public_path($photo->source)))
+            unlink(public_path($photo->source));
+
+        $photo->delete();
+
+        return response()->json(['success' => true, 'content' => $photo]);
     }
 
     public function storeComment(Request $request, Photo $photo){

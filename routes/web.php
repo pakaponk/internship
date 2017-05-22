@@ -28,7 +28,7 @@ Route::group(['prefix' => 'web'], function() {
 
     Route::post('/photos/{photo}/comments', 'PhotoController@storeComment');
     Route::resource('photos', 'PhotoController', 
-        ["only" => ['index', 'show']]);
+        ["only" => ['index', 'show', 'destroy']]);
 });
 
 

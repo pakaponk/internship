@@ -33,6 +33,15 @@ export class PhotoService{
 		.catch(errorResponse => this.handleError(errorResponse))
 	}
 
+	delete(id){
+		return this.$http({
+			method: 'DELETE',
+			url: `web/photos/${id}`
+		})
+		.then(successResponse => this.handleSuccess(successResponse))
+		.catch(errorResponse => this.handleError(errorResponse))
+	}
+
 	handleSuccess(response){
 		if (response.data.success){
 			return response.data.content

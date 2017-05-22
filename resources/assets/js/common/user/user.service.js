@@ -5,6 +5,16 @@ export class UserService{
 		this.$log = $log
 	}
 
+	create(user){
+		return this.$http({
+			method: 'POST',
+			url: '/web/users',
+			data: user
+		})
+		.then(successResponse => this.handleSuccess(successResponse))
+		.catch(errorResponse => this.handleError(errorResponse))
+	}
+
 	handleSuccess(response){
 		if (response.data.success){
 			return response.data.content

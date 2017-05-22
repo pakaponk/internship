@@ -27,6 +27,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function photos(){
+        return $this->hasMany('App\Photo');
+    }
+
     public function setPasswordAttribute($value){
         $this->attributes['password'] = bcrypt($value);
     }

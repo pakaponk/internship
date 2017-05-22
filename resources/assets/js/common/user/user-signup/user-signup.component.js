@@ -29,6 +29,8 @@ export const UserSignupComponent = {
 					type: "success",
 					title: "Congratulation!",
 					text: 'Your account have been created.'
+				}, () => {
+					this.$state.go('user.signin')
 				})
 			})
 			.catch((error) => {

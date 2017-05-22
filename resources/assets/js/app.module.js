@@ -6,6 +6,8 @@ import { ComponentsModule } from './components/components.module'
 
 import { AppComponent } from './app.component'
 
+import '../css/style.css'
+
 angular.module('instagram', [
 	ComponentsModule,
 	CommonModule,

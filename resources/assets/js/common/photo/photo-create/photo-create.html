@@ -1,0 +1,45 @@
+<div class="container">
+    <h3>Create Photo</h3>
+
+    <form name="form">
+        <!--<div class="avatar-input margin-clear col-sm-3">
+            <img ng-show="!$ctrl.isAvatarChanging && !$ctrl.user.new_avatar" ng-src="{{$ctrl.user.avatar}}" alt="Avatar" class="img-circle">
+            <img ng-show="!$ctrl.isAvatarChanging && $ctrl.user.new_avatar" ng-src="{{$ctrl.user.new_avatar | ngfDataUrl}}" alt="Avatar" class="img-circle">
+
+            <div class="text-center" ng-show="$ctrl.isAvatarChanging">
+                <i class="font-h1 fa fa-spinner fa-spin"></i>
+            </div>
+
+            <button class="mt-20 btn btn-link padding-hor-clear padding-ver-clear" accept="image/*"
+            ngf-select ngf-change="$ctrl.afterAvatarChanged()" ngf-before-model-change="$ctrl.beforeAvatarChanged()" ng-model="$ctrl.user.new_avatar"
+            ngf-resize="{width: 400, height: 400, centerCrop: true}"
+            >
+                Change picture
+            </button>
+        </div>-->
+        <div class="form-group">
+            <label class="control-label">Photo</label>
+            <div ng-show="!$ctrl.isAvatarChanging && $ctrl.photo.source">
+                <img class="img-preview" ng-src="{{$ctrl.photo.source | ngfDataUrl}}">
+                <button class="btn btn-default" accept="image/*" ngf-select ngf-change="$ctrl.afterAvatarChanged()" ngf-before-model-change="$ctrl.beforeAvatarChanged()" ng-model="$ctrl.photo.source">
+                    Change Photo
+                </button>
+            </div>
+            <div ng-show="!$ctrl.isAvatarChanging && !$ctrl.photo.source" class="dropzone" accept="image/*" ngf-select ngf-change="$ctrl.afterAvatarChanged()" ngf-before-model-change="$ctrl.beforeAvatarChanged()" ng-model="$ctrl.photo.source">
+                <div class="dropzone__message">
+                    Click to upload
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Caption</label>
+            <input type="text" name="caption" ng-model="$ctrl.photo.caption" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" ng-click="$ctrl.create($ctrl.photo)">Submit</button>
+        </div>
+    </form>
+</div>
+

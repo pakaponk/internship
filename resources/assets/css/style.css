@@ -1,0 +1,19 @@
+.img-preview{
+    padding: 20px 0;
+    display: block;
+    max-height: 400px;
+}
+
+.dropzone{
+    cursor: pointer;
+    min-height: 150px;
+    padding: 50px;
+    border: 2px dashed #0087F7;
+    border-radius: 5px;
+    background: white;
+}
+
+.dropzone .dropzone__message{
+    text-align: center;
+    margin: 2em 0;
+}

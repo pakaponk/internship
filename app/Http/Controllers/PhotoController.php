@@ -46,7 +46,8 @@ class PhotoController extends Controller
      */
     public function show(Photo $photo)
     {
-        //
+        $photo->load('user', 'comments');
+        return response()->json(['success' => true, 'content' => $photo]);
     }
 
     /**

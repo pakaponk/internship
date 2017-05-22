@@ -16,6 +16,15 @@ export class PhotoService{
 		.catch(errorResponse => this.handleError(errorResponse))
 	}
 
+	get(id){
+		return this.$http({
+			method: 'GET',
+			url: `/web/photos/${id}`
+		})
+		.then(successResponse => this.handleSuccess(successResponse))
+		.catch(errorResponse => this.handleError(errorResponse))
+	}
+
 	handleSuccess(response){
 		if (response.data.success){
 			return response.data.content

@@ -27,7 +27,7 @@ Route::group(['prefix' => 'web'], function() {
         ["only" => ['show', 'store']]);
 
     Route::resource('photos', 'PhotoController', 
-        ["only" => ['index']]);
+        ["only" => ['index', 'show']]);
 });
 
 

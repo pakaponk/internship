@@ -4,6 +4,7 @@ export const MenubarComponent = {
 	templateUrl,
 	controller: class MenubarComponent{
 		constructor($state, UserService){
+			'ngInject'
 			this.$state = $state
 			this.UserService = UserService
 		}

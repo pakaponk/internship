@@ -4,7 +4,7 @@ export const AppComponent = {
 	templateUrl,
 	controller: class AppComponent{
 		constructor(){
-
+			'ngInject'
 		}
 	}
 }

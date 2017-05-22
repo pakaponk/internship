@@ -1,5 +1,3 @@
-import angular from 'angular'
-
 export class PhotoService{
 	constructor($http, $log){
 		'ngInject'
@@ -10,7 +8,7 @@ export class PhotoService{
 	all(){
 		return this.$http({
 			method: 'GET',
-			url: '/web/photos'
+			url: 'web/photos'
 		})
 		.then(successResponse => this.handleSuccess(successResponse))
 		.catch(errorResponse => this.handleError(errorResponse))
@@ -19,7 +17,7 @@ export class PhotoService{
 	get(id){
 		return this.$http({
 			method: 'GET',
-			url: `/web/photos/${id}`
+			url: `web/photos/${id}`
 		})
 		.then(successResponse => this.handleSuccess(successResponse))
 		.catch(errorResponse => this.handleError(errorResponse))
@@ -28,7 +26,7 @@ export class PhotoService{
 	createComment(id, comment){
 		return this.$http({
 			method: 'POST',
-			url: `/web/photos/${id}/comments`,
+			url: `web/photos/${id}/comments`,
 			data: comment
 		})
 		.then(successResponse => this.handleSuccess(successResponse))

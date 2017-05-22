@@ -12,7 +12,7 @@ export class UserService{
 	create(user){
 		return this.$http({
 			method: 'POST',
-			url: '/web/users',
+			url: 'web/users',
 			data: user
 		})
 		.then(successResponse => this.handleSuccess(successResponse))
@@ -22,7 +22,7 @@ export class UserService{
 	login(user){
 		return this.$http({
 			method: 'POST',
-			url: '/web/auth/login',
+			url: 'web/auth/login',
 			data: user
 		})
 		.then(successResponse => this.handleSuccess(successResponse))
@@ -32,7 +32,7 @@ export class UserService{
 	logout(){
 		return this.$http({
 			method: 'GET',
-			url: '/web/auth/logout',
+			url: 'web/auth/logout',
 		})
 		.then(successResponse => this.handleSuccess(successResponse))
 		.catch(errorResponse => this.handleError(errorResponse))
@@ -60,7 +60,7 @@ export class UserService{
 		{
 			return this.$http({
 				method : 'GET',
-				url : '/web/auth/current'
+				url : 'web/auth/current'
 			})
 			.then((successResponse) => this.handleSuccess(successResponse))
 			.then((user) => {
@@ -92,7 +92,7 @@ export class UserService{
 	get(id){
 		return this.$http({
 			method: 'GET',
-			url: `/web/users/${id}`
+			url: `web/users/${id}`
 		})
 		.then(successResponse => this.handleSuccess(successResponse))
 		.catch(errorResponse => this.handleError(errorResponse))
@@ -101,7 +101,7 @@ export class UserService{
 	photos(id){
 		return this.$http({
 			method: 'GET',
-			url: `/web/users/${id}/photos`
+			url: `web/users/${id}/photos`
 		})
 		.then(successResponse => this.handleSuccess(successResponse))
 		.catch(errorResponse => this.handleError(errorResponse))
@@ -109,7 +109,7 @@ export class UserService{
 
 	createPhoto(id, photo){
 		return this.Upload.upload({
-			url: `/web/users/${id}/photos`,
+			url: `web/users/${id}/photos`,
 			data: photo,
 		})
 		.then(successResponse => this.handleSuccess(successResponse)

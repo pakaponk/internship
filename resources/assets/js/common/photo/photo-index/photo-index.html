@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="pv-30">
+        <div ng-show="$ctrl.photos.length" class="row">
+            <div ng-repeat="photo in $ctrl.photos">
+                <div class="col-sm-6 col-md-4">
+                    <photo-card-component photo="photo"></photo-card-component>
+                </div>
+                <div ng-if="$index%3 == 2" class="hidden-xs hidden-sm clearfix"></div>
+                <div ng-if="$index%2 == 1" class="hidden-xs hidden-md hidden-lg clearfix"></div>
+            </div>
+        </div>
+
+        <div ng-hide="$ctrl.photos.length" class="not-found-message-block">
+            <i class="not-found-message-block__icon fa fa-frown-o fa-5x"></i>
+            <h3 class="not-found-message-block__message">
+                Sorry<br>
+                <span>
+                    {{ $ctrl.isOwner ? 'Look like you have not uploaded any photos yet': 'Look like this user have not uploaded any photos yet'}}    
+                </span>
+
+                <div ng-show="$ctrl.isOwner" class="pv-30">
+					<h4 class="text-muted">
+                        Be the first one to upload it! <a class="btn-link" ui-sref="user.signup" title="Sign up">Sign up</a>
+                    </h4>
+				</div>
+
+            </h3>
+        </div>
+    </div>
+</div>

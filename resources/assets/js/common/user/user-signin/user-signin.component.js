@@ -25,7 +25,7 @@ export const UserSigninComponent = {
 			this.UserService.login(user)
 			.then((user) => {
 				this.UserService.setUser(user)
-				this.$state.go('home')
+				this.$state.go('photo.index')
 			})
 			.catch((error) => {
 				switch(error.status){

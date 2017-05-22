@@ -3,6 +3,27 @@
     padding-bottom: 30px;
 }
 
+a.thumbnail:hover{
+    text-decoration: none;
+}
+
+.pre-text{
+    white-space: pre;
+}
+
+.comment{
+    padding: 20px 15px;
+    background-color: #f1f1f1;
+}
+
+.comment + .comment{
+    margin-top: 20px;
+}
+
+.comment:last-of-type{
+    margin-bottom: 20px;
+}
+
 .not-found-message-block{
     padding-top: 30px;
     padding-bottom: 30px;
@@ -16,10 +37,21 @@
     color: #777;
 }
 
+.img-frame{
+    display: inline-block;
+    border: 1px solid #ddd;
+    padding: 4px;
+    border-radius: 5px;
+}
+
 .img-preview{
     padding: 20px 0;
     display: block;
     max-height: 400px;
+}
+
+.img-frame > .img-preview{
+    padding: 0px;
 }
 
 .dropzone{

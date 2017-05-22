@@ -1,10 +1,12 @@
 import angular from 'angular'
 
 export class UserService{
-	constructor($http, $log){
+	constructor($http, $log, Upload){
 		'ngInject'
 		this.$http = $http
 		this.$log = $log
+
+		this.Upload = Upload
 	}
 
 	create(user){
@@ -85,6 +87,20 @@ export class UserService{
 		{
 			this.user = user
 		}
+	}
+
+	createPhoto(id, photo){
+		return this.Upload.upload({
+			url: `web/users/${id}/photos`,
+			data: photo,
+		})
+		.then(successResponse => this.handleSuccess(successResponse)
+		, errorResponse => this.handleError(errorResponse)
+		, (event) => {
+			let progressPercentage = parseInt(100.0 * event.loaded / event.total)
+			if (event.config.data.new_avatar)
+				this.$log.info(`progress: ${progressPercentage} % Photo`)
+		})
 	}
 
 	handleSuccess(response){

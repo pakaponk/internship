@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+
 use Illuminate\Http\Request;
 
 use Auth;
@@ -125,5 +126,28 @@ class UserController extends Controller
     public function logout(){
         Auth::logout();
         return response()->json(['success' => true]);
+    }
+
+    public function storePhoto(Request $request, User $user){
+        if (!Auth::check())
+        {
+            return response()->json(['success' => false, 'error' => 'Unauthenticated'], 401);
+        }
+
+        if (Auth::id() != $user->id)
+        {
+            return response()->json(['success' => false, 'error' => 'Forbidden'], 403);
+        }
+
+        $this->validate($request, [
+            'source' =>  'required|image',
+            'caption' =>  'required'
+        ]);
+
+        $photo = $user->photos()->create($request->input());
+        $photo->source = $request->file('source');
+        $photo->save();
+
+        return response()->json(['success' => true, 'content' => $photo]);
     }
 }

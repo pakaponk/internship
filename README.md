@@ -1,2 +1,0 @@
-# internship
-CookPad Internship

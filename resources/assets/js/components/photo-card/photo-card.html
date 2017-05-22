@@ -1,0 +1,7 @@
+<a ui-sref="photo.info({id: $ctrl.photo.id})" class="thumbnail">
+    <img ng-src="{{$ctrl.photo.source}}" alt="Photo">
+    <div class="caption">
+        <h4>{{$ctrl.photo.caption}}</h4>
+        <p class="text-muted">By {{$ctrl.photo.user.name}}</p>
+    </div>
+</a>

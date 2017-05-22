@@ -1,4 +1,5 @@
 import angular from 'angular'
+import ngFileUpload from 'ng-file-upload'
 
 import { CommonModule } from './common/common.module'
 import { ComponentsModule } from './components/components.module'
@@ -7,7 +8,8 @@ import { AppComponent } from './app.component'
 
 angular.module('instagram', [
 	ComponentsModule,
-	CommonModule
+	CommonModule,
+	ngFileUpload
 ])
 .component('app', AppComponent)
 .config(['$locationProvider', ($locationProvider) => {

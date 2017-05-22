@@ -39,6 +39,8 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|unique:users|email',
             'password' => 'required|confirmed|regex:/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/'
+        ], [
+            'password.regex' => 'the password field must contain minimum 8 characters at least 1 alphabet, 1 number and 1 special character!',
         ]);
 
         $user = User::create($request->input());

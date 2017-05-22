@@ -3,11 +3,11 @@ import uiRouter from '@uirouter/angularjs'
 
 import { PhotoIndexComponent } from './photo-index.component'
 
-export const PhotoIndexModule = angular.module('photo.index', [
+export const PhotoIndexModule = angular.module('common.photo.index', [
 	uiRouter
 ])
 .component('photoIndex', PhotoIndexComponent)
-.config($stateProvider => {
+.config(($stateProvider, $urlRouterProvider) => {
 	'ngInject'
 	$stateProvider.state('photo.index', {
 		url: '/photos',
@@ -16,5 +16,6 @@ export const PhotoIndexModule = angular.module('photo.index', [
 			photos: (PhotoService) => PhotoService.all()
 		}
 	})
+	$urlRouterProvider.otherwise('/photos')
 })
 .name

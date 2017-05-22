@@ -32,6 +32,7 @@ module.exports = webpackMerge(commonConfig, {
 		stats: 'minimal',
 		proxy: {
 			'/web' : 'http://localhost/internship/public',
+			'/images': 'http://localhost/internship/public'
 		}
 	}
 })

@@ -25,6 +25,16 @@ export class PhotoService{
 		.catch(errorResponse => this.handleError(errorResponse))
 	}
 
+	createComment(id, comment){
+		return this.$http({
+			method: 'POST',
+			url: `/web/photos/${id}/comments`,
+			data: comment
+		})
+		.then(successResponse => this.handleSuccess(successResponse))
+		.catch(errorResponse => this.handleError(errorResponse))
+	}
+
 	handleSuccess(response){
 		if (response.data.success){
 			return response.data.content

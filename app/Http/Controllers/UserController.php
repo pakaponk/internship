@@ -128,6 +128,19 @@ class UserController extends Controller
         return response()->json(['success' => true]);
     }
 
+    public function photos(User $user){
+        if (Auth::id() != $user->id)
+        {
+            $photos = $user->photos()->with('user')->get();
+        }
+        else
+        {
+            $photos = $user->photos()->get();
+        }
+
+        return response()->json(['success' => true, 'content' => $photos]);
+    }
+
     public function storePhoto(Request $request, User $user){
         if (!Auth::check())
         {

@@ -20,6 +20,7 @@ Route::group(['prefix' => 'web'], function() {
     Route::get('/auth/logout', 'UserController@logout');
     Route::get('/auth/current', 'UserController@current');
 
+    Route::get('/users/{user}/photos', 'UserController@photos');
     Route::post('/users/{user}/photos', 'UserController@storePhoto');
 
     Route::resource('users', 'UserController', 

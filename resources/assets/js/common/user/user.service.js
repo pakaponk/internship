@@ -89,9 +89,18 @@ export class UserService{
 		}
 	}
 
+	photos(id){
+		return this.$http({
+			method: 'GET',
+			url: `/web/users/${id}/photos`
+		})
+		.then(successResponse => this.handleSuccess(successResponse))
+		.catch(errorResponse => this.handleError(errorResponse))
+	}
+
 	createPhoto(id, photo){
 		return this.Upload.upload({
-			url: `web/users/${id}/photos`,
+			url: `/web/users/${id}/photos`,
 			data: photo,
 		})
 		.then(successResponse => this.handleSuccess(successResponse)

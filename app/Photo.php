@@ -40,4 +40,8 @@ class Photo extends Model
                 break;
         }
     }
+
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
 }
